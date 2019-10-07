@@ -91,5 +91,7 @@ export const silentAuth = callback => {
 export const logout = () => {
   console.log("Logout")
   localStorage.setItem("isLoggedIn", false)
-  auth.logout()
+  auth.logout({
+    returnTo: process.env.AUTH0_LOGOUT_URL,
+  })
 }
