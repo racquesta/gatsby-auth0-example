@@ -43,7 +43,9 @@ export const login = () => {
 }
 
 export const setSession = (cb = () => {}) => (err, authResult) => {
+  console.log("authResult", authResult)
   if (err) {
+    console.log("Error", err)
     navigate("/")
     cb()
     return
@@ -81,11 +83,13 @@ export const silentAuth = callback => {
   // if not authenticated -> callback
   if (!isAuthenticated()) return callback()
   // otherwise check login and set tokens and user data
+  // console.log(auth.checkSession)
   auth.checkSession({}, setSession(callback))
 }
 
 // Logout
 export const logout = () => {
+  console.log("Logout")
   localStorage.setItem("isLoggedIn", false)
   auth.logout()
 }

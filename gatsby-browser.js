@@ -14,6 +14,7 @@ class SessionCheck extends React.Component {
   }
 
   handleCheckSession = () => {
+    console.log("setting loading to false")
     this.setState({ loading: false })
   }
 

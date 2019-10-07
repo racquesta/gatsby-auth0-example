@@ -5,12 +5,18 @@ import { BrowserRouter as Router } from "react-router-dom"
 import { Link } from "gatsby"
 import { login, isAuthenticated, getProfile, logout } from "../utils/auth"
 
-const Home = ({ user }) => (
-  <div>
-    <p>Hi, {user.name ? user.name : "friend"}!</p>
-    <p>If you see your name above, you are logged in!</p>
-  </div>
-)
+const Home = ({ user }) => {
+  console.log(user)
+  return (
+    <div>
+      <p>Hi, {user.name ? user.name : "friend"}!</p>
+      <img src={user.picture} alt="A picture of you!" />
+      <p>
+        If you see your name and github profile pic above, you are logged in!
+      </p>
+    </div>
+  )
+}
 const Settings = () => <p>Settings</p>
 const Billing = () => <p>Billing</p>
 
@@ -26,7 +32,13 @@ const Account = () => {
     <>
       <nav>
         <Link to="/account">Home</Link>{" "}
-        <a href="#logout" onClick={() => logout()}>
+        <a
+          href="#logout"
+          onClick={e => {
+            logout()
+            e.preventDefault()
+          }}
+        >
           Log Out
         </a>
       </nav>
