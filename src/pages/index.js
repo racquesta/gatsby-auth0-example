@@ -4,6 +4,6 @@ import { Link } from "gatsby"
 export default () => (
   <div>
     <p>Hello!</p>
-    <Link to="/account">Sign in</Link>
+    <Link to="/account">Protected Route</Link>
   </div>
 )

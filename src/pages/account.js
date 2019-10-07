@@ -17,8 +17,6 @@ const Home = ({ user }) => {
     </div>
   )
 }
-const Settings = () => <p>Settings</p>
-const Billing = () => <p>Billing</p>
 
 const Account = () => {
   if (!isAuthenticated()) {
