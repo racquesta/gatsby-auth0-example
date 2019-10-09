@@ -3,7 +3,7 @@
 
 exports.onCreatePage = async ({ page, actions }) => {
   const { createPage } = actions
-
+  console.log(page.path)
   // if path matches /account at the start of the string
   if (page.path.match(/^\/account/)) {
     // page.matchPath is used for matching pages on the client side

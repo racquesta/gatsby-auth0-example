@@ -1,12 +1,11 @@
 import React from "react"
-// User react router instead of reach router here
-// TODO: research differences/pros/cons
-import { BrowserRouter as Router } from "react-router-dom"
+import { Router } from "@reach/router"
 import { Link } from "gatsby"
 import { login, isAuthenticated, getProfile, logout } from "../utils/auth"
+import { match } from "minimatch"
 
-const Home = ({ user }) => {
-  console.log(user)
+const Home = ({ user, ...props }) => {
+  console.log(props)
   return (
     <div>
       <p>Hi, {user.name ? user.name : "friend"}!</p>
@@ -14,6 +13,15 @@ const Home = ({ user }) => {
       <p>
         If you see your name and github profile pic above, you are logged in!
       </p>
+    </div>
+  )
+}
+
+const Other = ({ user }) => {
+  return (
+    <div>
+      <p>Hi, {user.name ? user.name : "friend"} </p>
+      <p>This is another route.</p>
     </div>
   )
 }
@@ -27,7 +35,7 @@ const Account = () => {
   const user = getProfile()
 
   return (
-    <>
+    <div>
       <nav>
         <Link to="/account">Home</Link>{" "}
         <a
@@ -38,12 +46,14 @@ const Account = () => {
           }}
         >
           Log Out
-        </a>
+        </a>{" "}
+        <Link to="/account/other">Other</Link>
       </nav>
       <Router>
         <Home path="/account" user={user} />
+        <Other path="/account/other" user={user} />
       </Router>
-    </>
+    </div>
   )
 }
 export default Account
