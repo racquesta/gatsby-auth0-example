@@ -2,7 +2,6 @@ import React from "react"
 import { Router } from "@reach/router"
 import { Link } from "gatsby"
 import { login, isAuthenticated, getProfile, logout } from "../utils/auth"
-import { match } from "minimatch"
 
 const Home = ({ user, ...props }) => {
   console.log(props)
@@ -26,9 +25,9 @@ const Other = ({ user }) => {
   )
 }
 
-const Account = () => {
+const Protected = props => {
   if (!isAuthenticated()) {
-    login()
+    login(window.location.pathname)
     return <p>Redirecting to login...</p>
   }
 
@@ -37,7 +36,7 @@ const Account = () => {
   return (
     <div>
       <nav>
-        <Link to="/account">Home</Link>{" "}
+        <Link to="/protected">Home</Link>{" "}
         <a
           href="#logout"
           onClick={e => {
@@ -47,13 +46,13 @@ const Account = () => {
         >
           Log Out
         </a>{" "}
-        <Link to="/account/other">Other</Link>
+        <Link to="/protected/other">Other</Link>
       </nav>
       <Router>
-        <Home path="/account" user={user} />
-        <Other path="/account/other" user={user} />
+        <Home path="/protected" user={user} />
+        <Other path="/protected/other" user={user} />
       </Router>
     </div>
   )
 }
-export default Account
+export default Protected
