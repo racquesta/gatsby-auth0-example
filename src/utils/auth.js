@@ -83,6 +83,7 @@ export const getProfile = () => {
 
 // called in client side congif (gatsby-browser)
 export const silentAuth = callback => {
+  console.log("here")
   localStorage.setItem(
     "location",
     window.location.pathname.replace("/gatsby-auth0-example")
