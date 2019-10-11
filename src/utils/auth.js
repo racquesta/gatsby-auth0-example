@@ -31,7 +31,6 @@ export const isAuthenticated = () => {
 
 // 1. this function is called from a component
 export const login = param => {
-  sessionStorage.setItem("location", window.location.pathname)
   if (!isBrowser) {
     return
   }
@@ -40,6 +39,7 @@ export const login = param => {
   // the authize function will send the user to the callback
   // route given in .env file
   // That route will call handleAuthentication
+  sessionStorage.setItem("location", window.location.pathname)
   auth.authorize()
 }
 

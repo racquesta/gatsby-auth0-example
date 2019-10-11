@@ -4,7 +4,6 @@ import { Link } from "gatsby"
 import { login, isAuthenticated, getProfile, logout } from "../utils/auth"
 
 const Home = ({ user, ...props }) => {
-  console.log(props)
   return (
     <div>
       <p>Hi, {user.name ? user.name : "friend"}!</p>
@@ -27,7 +26,7 @@ const Other = ({ user }) => {
 
 const Protected = props => {
   if (!isAuthenticated()) {
-    login(window.location.pathname)
+    login()
     return <p>Redirecting to login...</p>
   }
 
