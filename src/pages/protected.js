@@ -24,7 +24,10 @@ const Other = ({ user }) => {
   )
 }
 
+const FallBack = () => <div>404</div>
+
 const Protected = props => {
+  console.log(props)
   if (!isAuthenticated()) {
     login()
     return <p>Redirecting to login...</p>
@@ -48,8 +51,8 @@ const Protected = props => {
         <Link to="/protected/other">Other</Link>
       </nav>
       <Router>
-        <Home path="/" user={user} />
-        <Other path="/other" user={user} />
+        <Home path="/protected" user={user} />
+        <Other path="/protected/other" user={user} />
       </Router>
     </div>
   )

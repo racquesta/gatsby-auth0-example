@@ -61,7 +61,7 @@ export const setSession = (cb = () => {}) => (err, authResult) => {
     user = authResult.idTokenPayload
     localStorage.setItem("isLoggedIn", true)
     navigate(sessionStorage.getItem("location"))
-    sessionStorage.removeItem("location")
+    // sessionStorage.removeItem("location")
     cb()
   }
 }
