@@ -48,8 +48,8 @@ const Protected = props => {
         <Link to="/protected/other">Other</Link>
       </nav>
       <Router>
-        <Home path="/protected" user={user} />
-        <Other path="/protected/other" user={user} />
+        <Home path="/" user={user} />
+        <Other path="/other" user={user} />
       </Router>
     </div>
   )
