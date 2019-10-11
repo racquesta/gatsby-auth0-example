@@ -5,6 +5,6 @@
  */
 
 module.exports = {
-  // pathPrefix: "/gatsby-auth0-example",
+  pathPrefix: "/gatsby-auth0-example",
   /* Your site config here */
 }
