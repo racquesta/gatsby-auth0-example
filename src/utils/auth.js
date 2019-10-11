@@ -39,7 +39,7 @@ export const login = param => {
   // the authize function will send the user to the callback
   // route given in .env file
   // That route will call handleAuthentication
-  sessionStorage.setItem(
+  localStorage.setItem(
     "location",
     window.location.pathname.replace("/gatsby-auth0-example")
   )
@@ -60,7 +60,7 @@ export const setSession = (cb = () => {}) => (err, authResult) => {
     tokens.expiresAt = expiresAt
     user = authResult.idTokenPayload
     localStorage.setItem("isLoggedIn", true)
-    navigate(sessionStorage.getItem("location"))
+    navigate(localStorage.getItem("location"))
     // sessionStorage.removeItem("location")
     cb()
   }
@@ -83,7 +83,7 @@ export const getProfile = () => {
 
 // called in client side congif (gatsby-browser)
 export const silentAuth = callback => {
-  sessionStorage.setItem(
+  localStorage.setItem(
     "location",
     window.location.pathname.replace("/gatsby-auth0-example")
   )
