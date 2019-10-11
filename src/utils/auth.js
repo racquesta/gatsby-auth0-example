@@ -39,7 +39,7 @@ export const login = param => {
   // the authize function will send the user to the callback
   // route given in .env file
   // That route will call handleAuthentication
-  console.log(window.location.pathname)
+  console.log(window.location)
   sessionStorage.setItem("location", window.location.pathname)
   auth.authorize()
 }
