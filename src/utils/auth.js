@@ -58,7 +58,7 @@ export const setSession = (cb = () => {}) => (err, authResult) => {
     tokens.expiresAt = expiresAt
     user = authResult.idTokenPayload
     localStorage.setItem("isLoggedIn", true)
-    navigate("protected")
+    navigate("/protected")
     //sessionStorage.removeItem("location")
     cb()
   }
