@@ -52,7 +52,7 @@ const Protected = props => {
       </nav>
       <Router>
         <Home path="/protected" user={user} />
-        <Other path="/protected/other" user={user} />
+        <Other path="protected/other" user={user} />
       </Router>
     </div>
   )
