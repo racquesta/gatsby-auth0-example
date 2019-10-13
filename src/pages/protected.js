@@ -3,11 +3,11 @@ import { Router } from "@reach/router"
 import { Link } from "gatsby"
 import { login, isAuthenticated, getProfile, logout } from "../utils/auth"
 
-const Home = ({ user, ...props }) => {
+const Home = ({ props }) => {
+  console.log("HOME PROPS", props)
   return (
     <div>
-      <p>Hi, {user.name ? user.name : "friend"}!</p>
-      <img src={user.picture} alt="A picture of you!" />
+      <p>Hi, "friend"!</p>
       <p>
         If you see your name and github profile pic above, you are logged in!
       </p>
@@ -15,10 +15,11 @@ const Home = ({ user, ...props }) => {
   )
 }
 
-const Other = ({ user }) => {
+const Other = props => {
+  console.log("OTHER PROPS", props)
   return (
     <div>
-      <p>Hi, {user.name ? user.name : "friend"} </p>
+      <p>Hi, friend </p>
       <p>This is another route.</p>
     </div>
   )
@@ -27,13 +28,13 @@ const Other = ({ user }) => {
 const FallBack = () => <div>404</div>
 
 const Protected = props => {
-  console.log(props)
-  if (!isAuthenticated()) {
-    login()
-    return <p>Redirecting to login...</p>
-  }
+  console.log("Protected", props)
+  // if (!isAuthenticated()) {
+  //   login()
+  //   return <p>Redirecting to login...</p>
+  // }
 
-  const user = getProfile()
+  // const user = getProfile()
 
   return (
     <div>
@@ -51,8 +52,8 @@ const Protected = props => {
         <Link to="/protected/other">Other</Link>
       </nav>
       <Router>
-        <Home path="/protected" user={user} />
-        <Other path="protected/other" user={user} />
+        <Home path="/protected" />
+        <Other path="/protected/other" />
       </Router>
     </div>
   )
