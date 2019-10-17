@@ -20,8 +20,8 @@ exports.createPages = ({ actions }) => {
   const { createRedirect } = actions
 
   createRedirect({
-    from: `/*`,
-    to: `index.html`,
+    fromPath: "/*",
+    toPath: "index.html",
     statusCode: 200,
   })
 }
