@@ -16,6 +16,16 @@ exports.onCreatePage = async ({ page, actions }) => {
   }
 }
 
+exports.createPages = ({ actions }) => {
+  const { createRedirect } = actions
+
+  createRedirect({
+    from: `/*`,
+    to: `index.html`,
+    statusCode: 200,
+  })
+}
+
 // overriding server side config
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === "build-html") {
