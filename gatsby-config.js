@@ -9,7 +9,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-netlify",
       options: {
-        generateMatchPathRewrites: false,
+        //generateMatchPathRewrites: true,
       },
     },
   ],
