@@ -3,10 +3,11 @@ import { Router } from "@reach/router"
 import { Link } from "gatsby"
 import { login, isAuthenticated, getProfile, logout } from "../utils/auth"
 
-const Home = ({ props }) => {
+const Home = ({ user }) => {
   return (
     <div>
-      <p>Hi, "friend"!</p>
+      <p>Hi, {user.name || "friend"}!</p>
+      <img src={user.picture} alt="you" />
       <p>
         If you see your name and github profile pic above, you are logged in!
       </p>
@@ -14,15 +15,16 @@ const Home = ({ props }) => {
   )
 }
 
-const Other = props => {
+const Other = ({ user }) => {
   return (
     <div>
-      <p>Hi, friend </p>
+      <p>Hi, {user.name || "friend"}!</p>
       <p>This is another route.</p>
     </div>
   )
 }
 
+// TODO: figure out fallback 404 pages with plugin
 const FallBack = () => <div>404</div>
 
 const Protected = props => {
@@ -32,6 +34,7 @@ const Protected = props => {
   }
 
   const user = getProfile()
+  console.log(user)
 
   return (
     <div>
@@ -49,8 +52,8 @@ const Protected = props => {
         <Link to="/protected/other">Other</Link>
       </nav>
       <Router>
-        <Home path="/protected" />
-        <Other path="/protected/other" />
+        <Home path="/protected" user={user} />
+        <Other path="/protected/other" user={user} />
         <FallBack path="/protected/*" />
       </Router>
     </div>
