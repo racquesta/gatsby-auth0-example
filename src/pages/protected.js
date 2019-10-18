@@ -4,7 +4,6 @@ import { Link } from "gatsby"
 import { login, isAuthenticated, getProfile, logout } from "../utils/auth"
 
 const Home = ({ props }) => {
-  console.log("HOME PROPS", props)
   return (
     <div>
       <p>Hi, "friend"!</p>
@@ -16,7 +15,6 @@ const Home = ({ props }) => {
 }
 
 const Other = props => {
-  console.log("OTHER PROPS", props)
   return (
     <div>
       <p>Hi, friend </p>
@@ -28,13 +26,12 @@ const Other = props => {
 const FallBack = () => <div>404</div>
 
 const Protected = props => {
-  console.log("Protected", props)
-  // if (!isAuthenticated()) {
-  //   login()
-  //   return <p>Redirecting to login...</p>
-  // }
+  if (!isAuthenticated()) {
+    login(window.location.pathname)
+    return <p>Redirecting to login...</p>
+  }
 
-  // const user = getProfile()
+  const user = getProfile()
 
   return (
     <div>
@@ -54,6 +51,7 @@ const Protected = props => {
       <Router>
         <Home path="/protected" />
         <Other path="/protected/other" />
+        <FallBack path="/protected/*" />
       </Router>
     </div>
   )

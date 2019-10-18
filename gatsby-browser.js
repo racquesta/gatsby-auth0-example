@@ -1,35 +1,32 @@
-// import React from "react"
-// import { silentAuth } from "./src/utils/auth"
+import React from "react"
+import { silentAuth } from "./src/utils/auth"
 
-// // This is needed since Gatsby abstracts away the root element and
-// //  the root element must check to see if user is logged in and set the
-// // user information/tokens
+// This is needed since Gatsby abstracts away the root element and
+//  the root element must check to see if user is logged in and set the
+// user information/tokens
 
-// class SessionCheck extends React.Component {
-//   constructor(props) {
-//     super(props)
-//     this.state = {
-//       loading: true,
-//     }
-//   }
+class SessionCheck extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      loading: true,
+    }
+  }
 
-//   handleCheckSession = () => {
-//     this.setState({ loading: false })
-//   }
+  handleCheckSession = () => {
+    this.setState({ loading: false })
+  }
 
-//   componentDidMount() {
-//     console.log("props", this.props.children.props)
-//     console.log(window.location.pathname)
-//     this.handleCheckSession()
-//     // silentAuth(this.handleCheckSession)
-//   }
+  componentDidMount() {
+    silentAuth(this.handleCheckSession)
+  }
 
-//   render() {
-//     return this.state.loading === false && <>{this.props.children}</>
-//   }
-// }
+  render() {
+    return this.state.loading === false && <>{this.props.children}</>
+  }
+}
 
-// export const wrapRootElement = ({ element }) => {
-//   console.log(element)
-//   return <SessionCheck>{element}</SessionCheck>
-// }
+export const wrapRootElement = ({ element }) => {
+  console.log(element)
+  return <SessionCheck>{element}</SessionCheck>
+}
