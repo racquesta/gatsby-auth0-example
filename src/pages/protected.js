@@ -29,7 +29,7 @@ const FallBack = () => <div>404</div>
 
 const Protected = props => {
   if (!isAuthenticated()) {
-    login(window.location.pathname || null)
+    login()
     return <p>Redirecting to login...</p>
   }
 

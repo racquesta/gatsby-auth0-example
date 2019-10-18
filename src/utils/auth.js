@@ -30,7 +30,7 @@ export const isAuthenticated = () => {
 }
 
 // 1. this function is called from a component
-export const login = param => {
+export const login = () => {
   if (!isBrowser) {
     return
   }
