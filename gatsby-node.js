@@ -11,19 +11,17 @@ exports.onCreatePage = async ({ page, actions }) => {
 
     // Update the page
     createPage(page)
-  } else if (page.path.match(/^\/test/)) {
-    page.matchPath = "/test/*"
   }
 }
 
 exports.createPages = ({ actions }) => {
   const { createRedirect } = actions
 
-  createRedirect({
-    fromPath: "/*",
-    toPath: "index.html",
-    statusCode: 200,
-  })
+  // createRedirect({
+  //   fromPath: "/*",
+  //   toPath: "index.html",
+  //   statusCode: 200,
+  // })
 }
 
 // overriding server side config
