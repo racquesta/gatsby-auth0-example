@@ -5,12 +5,5 @@
  */
 
 module.exports = {
-  plugins: [
-    {
-      resolve: "gatsby-plugin-netlify",
-      options: {
-        //generateMatchPathRewrites: true,
-      },
-    },
-  ],
+  plugins: ["gatsby-plugin-netlify"],
 }
